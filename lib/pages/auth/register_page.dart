@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
+    return Container(
+      child: Center(
         child: Text('Splash Screen'),
       ),
     );
