@@ -5,11 +5,10 @@ class RoundedButton extends StatelessWidget {
   final GestureTapCallback onPressed;
   final bool transparent;
 
-  RoundedButton({
-    @required this.text,
-    @required this.onPressed,
-    this.transparent = false
-  });
+  RoundedButton(
+      {@required this.text,
+      @required this.onPressed,
+      this.transparent = false});
 
   @override
   Widget build(BuildContext context) {

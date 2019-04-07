@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_app/constants/routes.dart';
 
-class SplashPage extends StatelessWidget {
+class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var deviceSize = MediaQuery.of(context).size;

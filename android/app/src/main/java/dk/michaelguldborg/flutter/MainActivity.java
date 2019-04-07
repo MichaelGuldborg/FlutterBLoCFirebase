@@ -1,4 +1,4 @@
-package dk.michaelguldborg.flutter_firebase_app;
+package dk.michaelguldborg.flutter;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;

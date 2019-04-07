@@ -19,8 +19,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  firebase_auth: ^0.6.6
-  cupertino_icons: ^0.1.2 # iOS style icons
+  bloc: ^0.11.0
+  flutter_bloc: ^0.9.0
+  equatable: ^0.2.0
+  firebase_auth: 0.7.0
+  google_sign_in: 3.2.4
+  font_awesome_flutter: ^8.4.0
 
 dev_dependencies:
   flutter_test:
