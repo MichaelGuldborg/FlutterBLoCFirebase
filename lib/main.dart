@@ -44,8 +44,8 @@ class _AppState extends State<App> {
             if (state is Uninitialized) {
               return SplashScreen();
             }
-            if (state is Unauthenticated || state is AuthenticationLoading) {
-              return AuthScreen(authBloc: _authenticationBloc);
+            if (state is Unauthenticated) {
+              return AuthScreen();
             }
             if (state is Authenticated) {
               return HomeScreen(firebaseUser: state.firebaseUser);

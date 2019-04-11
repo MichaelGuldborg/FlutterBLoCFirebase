@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_firebase_app/bloc/authentication/authentication.dart';
 import 'package:flutter_firebase_app/bloc/user_repository/user_repository.dart';
 import 'package:meta/meta.dart';
@@ -12,6 +13,12 @@ class AuthenticationBloc
   AuthenticationBloc({@required UserRepository userRepository})
       : assert(userRepository != null),
         _userRepository = userRepository;
+
+  @override
+  FirebaseUser currentUser() {
+    AuthenticationState state = currentState;
+    return state is Authenticated ? state.firebaseUser : null;
+  }
 
   @override
   AuthenticationState get initialState => Uninitialized();

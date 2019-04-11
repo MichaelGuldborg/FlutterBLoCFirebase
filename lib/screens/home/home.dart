@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_firebase_app/bloc/authentication/authentication.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -6,6 +8,18 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    BlocProvider.of<AuthenticationBloc>(context)
+        .state
+        .listen((AuthenticationState state) {
+      if (!(state is Authenticated)) {
+        print("");
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(

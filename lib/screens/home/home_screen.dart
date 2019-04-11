@@ -10,8 +10,12 @@ class HomeScreen extends StatelessWidget {
 
   HomeScreen({Key key, @required this.firebaseUser}) : super(key: key);
 
+
   @override
   Widget build(BuildContext context) {
+    AuthenticationBloc authenticationBloc = BlocProvider.of<AuthenticationBloc>(context);
+    authenticationBloc.currentUser();
+
     return Scaffold(
       appBar: AppBar(
         actions: <Widget>[
