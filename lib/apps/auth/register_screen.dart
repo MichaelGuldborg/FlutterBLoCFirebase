@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase_app/bloc/authentication/authentication.dart';
-import 'package:flutter_firebase_app/components/rounded_button_black.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_firebase_app/bloc/auth/auth_bloc.dart';
+import 'package:flutter_firebase_app/bloc/auth/auth_event.dart';
+import 'package:flutter_firebase_app/components/rounded_button.dart';
 
 class RegisterScreen extends StatelessWidget {
-  final AuthenticationBloc _authBloc;
-
-  RegisterScreen({@required AuthenticationBloc authBloc})
-      : assert(authBloc != null),
-        _authBloc = authBloc;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(body: Center(child: RegisterForm(context)));
@@ -42,13 +38,11 @@ class RegisterScreen extends StatelessWidget {
           ),
           RoundedButton(
               text: "Register",
-              onPressed: () {
-                _authBloc.dispatch(SignUpWithEmail(
-                  username: _usernameController.text,
-                  email: _emailController.text,
-                  password: _passwordController.text,
-                ));
-                Navigator.pop(context);
+              onPressed: () async {
+                final authBloc = BlocProvider.of<AuthBloc>(context);
+                final firebaseUser = await authBloc.service.signUpWithEmail(
+                    _usernameController.text, _emailController.text, _passwordController.text);
+                authBloc.dispatch(SignIn(user: firebaseUser));
               }),
         ],
       ),

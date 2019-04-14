@@ -1,27 +1,44 @@
 import 'package:equatable/equatable.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:meta/meta.dart';
 
 @immutable
-abstract class AuthenticationEvent extends Equatable {
-  AuthenticationEvent([List props = const []]) : super(props);
+abstract class AuthEvent extends Equatable {
+  AuthEvent([List props = const []]) : super(props);
 }
 
-class AppStarted extends AuthenticationEvent {
+class SignIn extends AuthEvent {
+  final FirebaseUser user;
+
+  SignIn({@required this.user}) : super([user]);
+
+  @override
+  String toString() => 'SignIn { user: ${user.toString()}';
+}
+
+class SignOut extends AuthEvent {
+  @override
+  String toString() => 'SignOut';
+}
+
+/*
+
+class AppStarted extends AuthEvent {
   @override
   String toString() => 'AppStarted';
 }
 
-class SignInAnonymously extends AuthenticationEvent {
+class SignInAnonymously extends AuthEvent {
   @override
   String toString() => 'SignInAnonymously';
 }
 
-class SignInWithGoogle extends AuthenticationEvent {
+class SignInWithGoogle extends AuthEvent {
   @override
   String toString() => 'SignInWithGoogle';
 }
 
-class SignInWithEmail extends AuthenticationEvent {
+class SignInWithEmail extends AuthEvent {
   final String email;
   final String password;
 
@@ -34,7 +51,7 @@ class SignInWithEmail extends AuthenticationEvent {
   String toString() => 'SignInWithEmail { email: $email, password: $password }';
 }
 
-class SignUpWithEmail extends AuthenticationEvent {
+class SignUpWithEmail extends AuthEvent {
   final String username;
   final String email;
   final String password;
@@ -50,7 +67,9 @@ class SignUpWithEmail extends AuthenticationEvent {
       'SignUpWithEmail { username: $username, email: $email, password: $password }';
 }
 
-class Logout extends AuthenticationEvent {
+class SignOut extends AuthEvent {
   @override
-  String toString() => 'Logout';
+  String toString() => 'SignOut';
 }
+
+ */
